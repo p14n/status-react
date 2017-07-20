@@ -9,6 +9,7 @@
             [status-im.components.tabs.bottom-shadow :refer [bottom-shadow-view]]
             [status-im.chats-list.screen :refer [chats-list]]
             [status-im.discover.screen :refer [discover]]
+            [status-im.wallet.screen :refer [wallet]]
             [status-im.contacts.screen :refer [contact-list]]
             [status-im.components.tabs.tabs :refer [tabs]]
             [status-im.components.tabs.styles :as st]
@@ -25,7 +26,7 @@
     :index         0}
    {:view-id       :discover
     :title         (label :t/discover)
-    :screen        discover
+    :screen        wallet
     :icon-inactive :icon_discover
     :icon-active   :icon_discover_active
     :index         1}
