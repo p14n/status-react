@@ -109,7 +109,7 @@
                         :ref                    #(reset! main-swiper %)
                         :on-momentum-scroll-end (on-scroll-end swiped? scroll-ended @view-id)})
               [chats-list]
-              [discover (= @view-id :discover)]
+              [wallet (= @view-id :discover)]
               [contact-list (= @view-id :contact-list)]]
              [tabs {:selected-view-id @view-id
                     :prev-view-id     @prev-view-id

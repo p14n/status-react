@@ -27,23 +27,23 @@
     [rn/view {:style st/today-variation-container}
      [rn/text {:style st/today-variation} "+5.433% today"]]]])
 
-(defn balance-list-item [{:keys [currency amount] :as row}]
+(defn balance-list-item [[id {:keys [currency amount] :as row}]]
   [rn/view {:style st/balance-item-container}
-   [rn/image {:source {:uri :icon_close_white}
+   [rn/image {:source {:uri :icon_close_dark}
               :style st/balance-item-currency-icon}]
-   [rn/text {:style st/balance-item-value} amount]
-   [rn/text {:style      st/balance-item-currency
-             :uppercase? true}
-    (str currency)]
-   [rn/image {:source {:uri :icon_arrow_left_gray}
+   [rn/view {:style st/balance-item-value-container}
+    [rn/text {:style st/balance-item-value} (str amount)]
+    [rn/text {:style      st/balance-item-currency
+              :uppercase? true}
+     id]]
+   [rn/image {:source {:uri :icon_arrow_right_gray}
               :style st/balance-item-details-icon}]])
 
 (defn render-separator-fn [balances-count]
   (fn [_ row-id _]
-    (when (< row-id (dec balances-count))
-      (rn/list-item
-       ^{:key row-id}
-       [common/separator {} st/transactions-list-separator]))))
+    (rn/list-item
+     ^{:key row-id}
+     [common/separator {} st/balance-list-separator])))
 
 (defn render-row-fn [row _ _]
   (rn/list-item
@@ -52,10 +52,10 @@
      [balance-list-item row]]]))
 
 (defn balance-section []
-  (let [balances {{:currency :eth :amount 0.445}
-                  {:currency :snt :amount 1}
-                  {:currency :sgt :amount 125455.555}
-                  {:currency :gnt :amount 0.024794}}]
+  (let [balances {"eth" {:currency :eth :amount 0.445}
+                  "snt" {:currency :snt :amount 1}
+                  "sgt" {:currency :sgt :amount 125455.555}
+                  "gnt" {:currency :gnt :amount 0.024794}}]
     [rn/view {:style st/balance-section}
      [rn/text {:style st/balance-section-title} "Balance"]
      [rn/list-view {:style           st/balance-list
@@ -78,7 +78,9 @@
     [rn/image {:source {:uri :icon_close_white}
                :style st/transactions-button-icon}]]])
 
-(defn wallet []
+(defview wallet []
+  []
+  {:component-did-mount #(rf/dispatch [:test-wallet])}
   [rn/view st/wallet-container
    [toolbar-view]
    [main-section]
