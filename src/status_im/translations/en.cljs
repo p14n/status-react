@@ -155,6 +155,7 @@
    :popular-tags                          "Popular tags"
    :recent                                "Recent"
    :no-statuses-discovered                "No statuses discovered"
+   :discovery-explanation                 "Discovery collects the status of your contacts (and their contacts) and shows them, organised by hashtag, to help you make connections"
    :no-statuses-found                     "No statuses found"
 
    ;settings

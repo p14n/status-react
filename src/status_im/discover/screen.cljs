@@ -92,4 +92,6 @@
       ;; todo change icon
       [icon :group_big contacts-st/empty-contacts-icon]
       [text {:style contacts-st/empty-contacts-text}
-       (label :t/no-statuses-discovered)]])])
+       (label :t/no-statuses-discovered)]
+      [text {:style contacts-st/empty-space-expanded-text}
+       (label :t/discovery-explanation)]])])

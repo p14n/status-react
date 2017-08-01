@@ -37,6 +37,11 @@
    :font-size  16
    :color      common/color-gray2})
 
+(def empty-space-expanded-text
+  (merge empty-contacts-text
+         {:margin-left 8
+          :margin-right 8}))
+
 (def contact-group-count
   {:margin-left 8
    :opacity     0.6})
